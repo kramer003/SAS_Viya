@@ -45,6 +45,11 @@ proc casutil;
  load file="/opt/sasinside/DemoData/test_save.csv" casout="hello_csv" outcaslib="&caslib" promote;
 run;
 
+/*alternate way to load*/
+proc casutil;
+load casdata = "test_save.sashdat" incaslib='DemoData' casout="test" outcaslib='DemoData';
+run;
+
 proc print data=mycaslib.hello_csv(obs=10);
 run;
 
