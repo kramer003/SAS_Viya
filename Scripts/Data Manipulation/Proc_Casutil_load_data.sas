@@ -76,3 +76,10 @@ run;
 proc casutil;
 list tables incaslib="&caslib";
 run;
+
+/* Define a CAS engine libref for CAS in-memory data tables */
+CAS mysess sessopts=(caslib=casuser timeout=3600);
+caslib ankram datasource=(srctype="path") path="/viyafiles/ankram/Data" sessref=mysess;
+libname mycaslib cas caslib=ankram;
+
+cas mysess host="localhost" port=5570 sessopts=(caslib=casuser) authinfo="~/.authinfo";
