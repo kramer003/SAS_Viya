@@ -83,3 +83,11 @@ caslib ankram datasource=(srctype="path") path="/viyafiles/ankram/Data" sessref=
 libname mycaslib cas caslib=ankram;
 
 cas mysess host="localhost" port=5570 sessopts=(caslib=casuser) authinfo="~/.authinfo";
+
+/*Connection needed to schedule jobs*/
+/*Connect to cas*/
+cas mysess host="localhost" port=5570 sessopts=(caslib=casuser) authinfo="/home/sasdemo/.authinfo" ;
+
+/* Define a CAS engine libref for CAS in-memory data tables */
+libname mycaslib cas caslib=DemoData;
+libname local "/opt/sasinside/DemoData";
