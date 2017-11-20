@@ -91,3 +91,6 @@ cas mysess host="localhost" port=5570 sessopts=(caslib=casuser) authinfo="/home/
 /* Define a CAS engine libref for CAS in-memory data tables */
 libname mycaslib cas caslib=DemoData;
 libname local "/opt/sasinside/DemoData";
+
+
+caslib _ALL_ assign;
