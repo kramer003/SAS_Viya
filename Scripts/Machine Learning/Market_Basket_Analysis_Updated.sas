@@ -40,27 +40,6 @@ data casuser.mba_network_final;
 	set casuser.mba_network casuser.mba_network2;
 run;
 
-proc fedsql sessref=mysess;
-create table casuser.mba_network as
-	select t1.item as t1_item,
-		   t1.count as item_count,
-		   t1.support as item_support,
-	       t2.*
-	from casuser.FREQMB t1 inner join casuser.mba_rules t2
-	on t1.item=t2.item1;
-quit;
-
-proc cas;
-	loadactionset "rulemining";
-	rulemining.mbanalysis /
-	items=2
-	idvariable="id"
-	tgtvariable="prodid"
-	table = {name="november_baskets", caslib="casuser"}
-	out = {name="mb3", caslib="casuser"}
-	suppct = .1;
-run;
-
 proc casutil;
 save casdata="mba_network" 
 incaslib="casuser"
@@ -79,7 +58,4 @@ incaslib="casuser";
 run;
 
 
-proc fedsql sessref=mysess;
-create table casuser.test1 as select * from casuser.read;
-run;
 cas mysess terminate;
