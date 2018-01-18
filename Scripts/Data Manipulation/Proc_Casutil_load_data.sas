@@ -5,6 +5,10 @@ libname mycaslib cas caslib=&caslib;
 /*define Local library*/
 libname DemoData '/opt/sasinside/DemoData';
 
+/*Caslib path*/
+caslib ankram datasource=(srctype="path") path="/viyafiles/ankram/data" sessref=mysess notactive;
+caslib _all_ assign;
+
 /*Dataset*/
 %let raw               = bank;
 
